@@ -11,7 +11,6 @@ export async function getServerSideProps() {
   };
 }
 const Blog = ({ blogs }: any) => {
-  console.log(blogs.data);
   return (
     <>
       <div>

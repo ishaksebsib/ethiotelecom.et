@@ -1,6 +1,19 @@
+import { translations } from "@/lib/lang";
+import { getPreferredLanguageCookie } from "@/utils/confLanguage";
 import Head from "next/head";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  // laguage change or set
+
+  useEffect(() => {
+    const lang = getPreferredLanguageCookie();
+    setTransTo(lang || "eng");
+  }, [getPreferredLanguageCookie()]);
+
+  const [transTo, setTransTo] = useState("eng");
+  const textData = translations[transTo];
+
   return (
     <>
       <Head>
@@ -11,7 +24,7 @@ export default function Home() {
       </Head>
 
       <div>
-        <h1 className=""> hello world</h1>
+        <h1 className="">{textData["heroH1"]}</h1>
       </div>
     </>
   );
